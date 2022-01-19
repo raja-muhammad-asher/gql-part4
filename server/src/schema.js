@@ -10,6 +10,10 @@ const typeDefs = gql`
     module(id: ID!): Module!
   }
 
+  type Mutation {
+    incrementTrackViews(id: ID!): IncrementTrackViewsResponse!
+  }
+
   "A track is a group of Modules that teaches about a specific topic"
   type Track {
     id: ID!
@@ -51,6 +55,13 @@ const typeDefs = gql`
     content: String
     "The module's video url, for video-based modules"
     videoUrl: String
+  }
+
+  type IncrementTrackViewsResponse {
+    code: Int!
+    success: Boolean!
+    message: String!
+    track: Track
   }
 `;
 
